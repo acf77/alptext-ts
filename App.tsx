@@ -1,21 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+
+import { Routes } from './src/routes/routes'
+
+import AppLoading from 'expo-app-loading'
+
+import {
+  useFonts,
+  OpenSans_300Light,
+  OpenSans_300Light_Italic,
+  OpenSans_600SemiBold,
+} from "@expo-google-fonts/open-sans";
+
+import {
+  Poppins_600SemiBold,
+  Poppins_300Light,
+} from "@expo-google-fonts/poppins";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [fontsLoaded] = useFonts({
+    OpenSans_300Light,
+    OpenSans_300Light_Italic,
+    OpenSans_600SemiBold,
+    Poppins_600SemiBold,
+    Poppins_300Light,
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  if (!fontsLoaded) return <AppLoading />;
+
+  return (
+    <Routes />
+  )
+}
