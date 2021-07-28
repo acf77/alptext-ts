@@ -1,8 +1,8 @@
 import React from "react";
+import AppLoading from "expo-app-loading";
 
-import { Routes } from './src/routes/routes'
-
-import AppLoading from 'expo-app-loading'
+import { Routes } from "./src/routes/routes";
+import { ContextProvider } from "./src/contexts/context";
 
 import {
   useFonts,
@@ -17,6 +17,8 @@ import {
 } from "@expo-google-fonts/poppins";
 
 export default function App() {
+  // data for ContextAPI
+
   const [fontsLoaded] = useFonts({
     OpenSans_300Light,
     OpenSans_300Light_Italic,
@@ -26,8 +28,9 @@ export default function App() {
   });
 
   if (!fontsLoaded) return <AppLoading />;
-
   return (
-    <Routes />
-  )
+    <ContextProvider>
+      <Routes />
+    </ContextProvider>
+  );
 }
