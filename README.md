@@ -22,3 +22,5 @@ Escreva seus trabalhos científicos de onde estiver.
   - Tooltip;
   - Conditional Styling;
   - Validação de Input;
+  - ContextAPI;
+  - TypeScript;
