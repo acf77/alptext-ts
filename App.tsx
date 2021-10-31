@@ -17,7 +17,6 @@ import {
 } from "@expo-google-fonts/poppins";
 
 export default function App() {
-  // data for ContextAPI
 
   const [fontsLoaded] = useFonts({
     OpenSans_300Light,

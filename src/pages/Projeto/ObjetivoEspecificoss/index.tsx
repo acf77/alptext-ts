@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   View,
   SafeAreaView,
@@ -8,20 +8,26 @@ import {
 
 import { useNavigation } from "@react-navigation/core";
 
-import { InputForm } from "../../components/InputForm";
-import { ButtonSave } from "../../components/ButtonSave";
-import { ButtonCancel } from "../../components/ButtonCancel";
-import { Header } from "../../components/Header";
-import { TooltipInfo } from "../../components/TooltipInfo";
-import { Profile } from "../../components/Profile";
+import { InputForm } from "../../../components/InputForm";
+import { ButtonSave } from "../../../components/ButtonSave";
+import { ButtonCancel } from "../../../components/ButtonCancel";
+import { Header } from "../../../components/Header";
+import { TooltipInfo } from "../../../components/TooltipInfo";
+import { Profile } from "../../../components/Profile";
+import { Context } from "../../../contexts/context";
 
 import { styles } from "./styles";
 
 export function ObjetivosEspecificos() {
+  const { objEspecifico, setObjEspecifico } = useContext(Context);
   const navigation = useNavigation();
 
   function handleNavigation() {
-    navigation.navigate("Summary");
+    if (objEspecifico === "") {
+      alert("Preencha o campo para continuar!");
+    } else {
+      navigation.navigate("Amostra");
+    }
   }
 
   return (
@@ -35,7 +41,7 @@ export function ObjetivosEspecificos() {
                   Objetivo Geral."
           />
         </View>
-        <InputForm title="Objetivo Geral" />
+        <InputForm title="Objetivo Geral" onChangeText={setObjEspecifico} />
         <View style={styles.buttons}>
           <ButtonSave title="Salvar" onPress={handleNavigation} />
           <ButtonCancel title="Cancelar" />
